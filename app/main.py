@@ -32,7 +32,14 @@ def rerun(run_id:str):
     previous=store.get(DB_PATH,run_id)
     if 'input_snapshot' not in previous:
         raise BusinessError('INPUT_SNAPSHOT_MISSING','旧批缺少源快照，请重新导入')
-    return store.save(DB_PATH,evaluate({'dataset':previous['source']},snapshot=previous['input_snapshot']))
+    try:
+        return store.save(DB_PATH,evaluate({'dataset':previous['source']},snapshot=previous['input_snapshot']))
+    except BusinessError as error:
+        # 重算失败不覆盖旧结论：旧批次原样保留，失败原因随响应返回，便于复核。
+        return JSONResponse(
+            {'code':'RERUN_FAILED','detail':error.message,'rerun_error':error.code,
+             'preserved_run_id':run_id,'result':previous},
+            status_code=error.status)
 @app.get('/api/runs')
 def runs():
     return store.history(DB_PATH)

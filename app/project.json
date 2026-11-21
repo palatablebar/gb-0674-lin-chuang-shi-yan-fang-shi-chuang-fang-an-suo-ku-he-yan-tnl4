@@ -9,6 +9,7 @@
     "访视排窗",
     "偏离复核",
     "复检裁决",
+    "药物交接",
     "锁库检查",
     "冻结归档"
   ],
@@ -28,6 +29,7 @@
     "windows",
     "deviation",
     "retest",
+    "dispense",
     "locking",
     "archive"
   ],
@@ -62,6 +64,22 @@
     "deviations": "偏离",
     "retest_issues": "复检问题",
     "blocked": "阻断项",
-    "status": "状态"
+    "status": "状态",
+    "event_id": "事件号",
+    "box": "药盒",
+    "action": "动作",
+    "evidence": "凭证",
+    "replaces": "被替换旧盒",
+    "settled": "发药结清",
+    "resolution": "药盒去向",
+    "chain": "换发链",
+    "handover_status": "交接结论",
+    "state": "去向",
+    "reason": "去向说明",
+    "dispense_blocked": "交接阻断",
+    "dispense_quarantined": "交接隔离",
+    "retransmission": "重试",
+    "handover_ok": "交接放行",
+    "blocked_total": "阻断合计"
   }
 }
